@@ -9,7 +9,7 @@
  ### Introduction ###
  
  This Github page contains the codes used in the project named above. 
- For further inquiries/questions, please contact Oluchi Oyekwe at olo0002@auburn.edu
+ For further inquiries/questions, please contact Oluchi Oyekwe at olo0002@auburn.edu.
  
  ### Usage ### 
  
