@@ -4,7 +4,7 @@
 
    * [Introduction](#introduction)
    * [Usage](#usage)
-   * [Inputs and Outputs](#Inputs and Outputs)
+   * [Inputs/Outputs](#Inputs/Outputs)
    
  ### Introduction ###
  
@@ -26,7 +26,7 @@
  + Mafft         (https://github.com/GSLBiotech/mafft)
  + IQtree        (https://github.com/Cibiv/IQ-TREE)
  
- ### Inputs and Outputs ###.
+ ### Inputs/Outputs ###.
  
  Input and output files are specified in the codes using <>. Output of some program serve as an input file for other programs, hence attention should be paid to the last letter added to each output file name in the codes.
  
