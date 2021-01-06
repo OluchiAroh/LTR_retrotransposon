@@ -1,0 +1,74 @@
+#Names in <> are file name(s) to be inputted.
+#LTR_harvest and LTR_finder codes
+################################################################################################################################################################################################
+
+#!/bin/bash
+
+module load genometools/1.5.10. 
+
+gt suffixerator -db <genome file name> -indexname <genome index file name> -tis -suf -lcp -des -ssp -sds -dna
+gt ltrharvest -index <genome index file name> -seqids yes -minlenltr 100 -maxlenltr 7000 -mintsd 4 -maxtsd 6 -similar 85 -vic 10 -seed 20 -motif TGCA -motifmis 1 > <output file name a>
+gt ltrharvest -index genome.final.fa -seqids yes -minlenltr 100 -maxlenltr 7000 -mintsd 4 -maxtsd 6 -similar 85 -vic 10 -seed 20 > <output file name b>
+
+module load ltrfinder/1.07
+ltr_finder -D 15000 -d 1000 -l 100 -L 7000 -p 20 -C -M 0.85 genome.final.fa > <output file name c>
+
+################################################################################################################################################################################################
+#LTR_retriever codes
+################################################################################################################################################################################################
+
+#!/bin/bash
+
+module load trf/4.09
+module load python/anaconda/3.6.4
+module load hmmer/3.1b2
+module load repeatmasker/4.0.6
+module load cdhit/4.7
+module load ncbi-blast/2.2.31+
+
+<path to LTR_retriever> -genome <genome file name> -infinder <output file name c> -inharvest <output file name a> -nonTGCA <output file name b> -threads 10
+
+################################################################################################################################################################################################
+#extract identfied LTR list
+################################################################################################################################################################################################
+
+#!/bin/bash
+
+module load python/anaconda/3.6.4
+module load hmmer/3.1b2
+module load repeatmasker/4.0.6
+module load cdhit/4.7
+module load ncbi-blast/2.2.31+
+
+
+awk '{if ($1~/[0-9]+/) print $10"\t"$1}'  <genome file name>.pass.list > <output name d>
+
+perl <path to LTR_retriever>/bin/call_seq_by_list.pl <output name d> -C <genome file name> > <output name e>
+
+################################################################################################################################################################################################
+#TE_sorter codes. 
+#-db option(gydb) can be replaced with another database from TE_sorter database options.
+################################################################################################################################################################################################
+
+#!/bin/bash
+
+module load python/2.7.15
+module load hmmer/3.1b2
+module load ncbi-blast/2.2.31+
+
+python <path to TE_sorter>/TEsorter.py -db gydb -st nucl -p 10 <output name e>
+
+################################################################################################################################################################################################
+#Mafft and IQtree code
+#domain(s) fasta file can be gotten from *dom.faa TE_sorter output file
+################################################################################################################################################################################################
+
+#!/bin/bash
+
+module load mafft
+module load iqtree/1.6.12
+
+mafft --auto <fasta file of domain(s)> > <output name f>
+
+iqtree -s <output name f> -bb 100000 -nt AUTO
+
