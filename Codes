@@ -1,5 +1,6 @@
+
 #Names in <> are file name(s) to be inputted.
-#LTR_harvest and LTR_finder codes
+#LTR_harvest and LTR_finder codes.
 ################################################################################################################################################################################################
 
 #!/bin/bash
@@ -8,10 +9,10 @@ module load genometools/1.5.10.
 
 gt suffixerator -db <genome file name> -indexname <genome index file name> -tis -suf -lcp -des -ssp -sds -dna
 gt ltrharvest -index <genome index file name> -seqids yes -minlenltr 100 -maxlenltr 7000 -mintsd 4 -maxtsd 6 -similar 85 -vic 10 -seed 20 -motif TGCA -motifmis 1 > <output file name a>
-gt ltrharvest -index genome.final.fa -seqids yes -minlenltr 100 -maxlenltr 7000 -mintsd 4 -maxtsd 6 -similar 85 -vic 10 -seed 20 > <output file name b>
+gt ltrharvest -index <genome file name> -seqids yes -minlenltr 100 -maxlenltr 7000 -mintsd 4 -maxtsd 6 -similar 85 -vic 10 -seed 20 > <output file name b>
 
 module load ltrfinder/1.07
-ltr_finder -D 15000 -d 1000 -l 100 -L 7000 -p 20 -C -M 0.85 genome.final.fa > <output file name c>
+ltr_finder -D 15000 -d 1000 -l 100 -L 7000 -p 20 -C -M 0.85 <genome file name> > <output file name c>
 
 ################################################################################################################################################################################################
 #LTR_retriever codes
