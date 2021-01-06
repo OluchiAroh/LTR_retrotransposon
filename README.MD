@@ -1,4 +1,4 @@
-## Genome-wide characterization of LTR retrotransposons in the non-model deep-sea annelid Lamellibrachia luymesi ##
+## Genome-wide characterization of LTR retrotransposons in the non-model deep-sea annelid *Lamellibrachia luymesi* ##
 
 ## Table of Contents
 
