@@ -13,7 +13,7 @@
  
  ### Usage ### 
  
- Most programs used in this project are open-source. However, you will need to clone the following repositories to your working directory in other to access them.
+ Most programs used in this project are open-source. However, you will need to clone/install the following repositories (with their dependencies) to your working directory in other to access them or you can install their conda versions.
  
  + LTR_retriever (https://github.com/oushujun/LTR_retriever)
  + TEsorter      (https://github.com/zhangrengang/TEsorter)
